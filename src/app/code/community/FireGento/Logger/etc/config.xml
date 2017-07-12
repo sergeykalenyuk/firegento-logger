@@ -162,6 +162,10 @@
                         <label>Redis Logger</label>
                         <class>FireGento_Logger_Model_Redis</class>
                     </redis>
+                    <sentry>
+                        <label>Sentry</label>
+                        <class>FireGento_Logger_Model_Sentry</class>
+                    </sentry>
                 </writer_models>
             </core>
         </log>
@@ -174,6 +178,16 @@
                 </firegento_logger_notification_email_template>
             </email>
         </template>
+        <events>
+            <controller_action_predispatch>
+                <observers>
+                    <firegento_logger_controller_action_predispatch>
+                        <class>firegento_logger/observer</class>
+                        <method>actionPreDispatch</method>
+                    </firegento_logger_controller_action_predispatch>
+                </observers>
+            </controller_action_predispatch>
+        </events>
     </global>
     <default>
         <logger>
@@ -269,6 +283,9 @@ confirmation]]></filter_request_data>
                 <password/>
                 <type>magento-log</type>
             </redis>
+            <sentry>
+                <curl_method>async</curl_method>
+            </sentry>
         </logger>
     </default>
     <frontend>
