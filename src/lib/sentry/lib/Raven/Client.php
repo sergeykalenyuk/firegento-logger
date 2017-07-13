@@ -248,6 +248,14 @@ class Raven_Client
         return $this;
     }
 
+    /**
+     * @return Raven_ErrorHandler|null
+     */
+    public function getErrorHandler()
+    {
+        return $this->error_handler;
+    }
+
     public function getRelease()
     {
         return $this->release;
